@@ -5,4 +5,4 @@ TO RUN THE CODE DOWNLOAD THE DATASET FROM GOOGLE DRIVE: https://drive.google.com
 
 AND SET THE WORKING DIRECTORY TO THE R FILE
 
-Git does not allow downloading files larger than 25MB
+Git does not allow uploading files larger than 25MB
