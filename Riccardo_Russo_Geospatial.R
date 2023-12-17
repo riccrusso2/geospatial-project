@@ -12,7 +12,7 @@ library(spatialreg)
 library(viridis)
 library(leaflet.extras)
 
-setwd("C:/Users/ricca/Documents/geospatial/progetto_geospatial/")
+setwd("C:/Users/ricca/Documents/geospatial/dataset_geospatial/")
 listings_path <- "listings.csv.gz"
 listings_df <- read_csv(listings_path, col_types = cols())  
 listings_df<- filter(listings_df, neighbourhood_cleansed=="Lecce")
@@ -359,13 +359,13 @@ hotspot <- as.numeric(row.names(as.data.frame(summary(mplot))))
 merged_data$wx <- lag.listw(listW1s, merged_data$price)
 merged_data$quadrant <- rep("None", length(merged_data$price))
 for(i in 1:length(hotspot))  {
-  if (merged_data$price[hotspot[i]]>median(merged_data$price) & merged_data$wx[hotspot[i]]> median(merged_data$wx)) 
+  if (merged_data$price[hotspot[i]]>mean(merged_data$price) & merged_data$wx[hotspot[i]]> mean(merged_data$wx)) 
     merged_data$quadrant[hotspot[i]] <- "HH" 
-  if (merged_data$price[hotspot[i]]>median(merged_data$price) & merged_data$wx[hotspot[i]]< median(merged_data$wx)) 
+  if (merged_data$price[hotspot[i]]>mean(merged_data$price) & merged_data$wx[hotspot[i]]< mean(merged_data$wx)) 
     merged_data$quadrant[hotspot[i]] <- "HL" 
-  if (merged_data$price[hotspot[i]]<median(merged_data$price) & merged_data$wx[hotspot[i]]< median(merged_data$wx)) 
+  if (merged_data$price[hotspot[i]]<mean(merged_data$price) & merged_data$wx[hotspot[i]]< mean(merged_data$wx)) 
     merged_data$quadrant[hotspot[i]] <- "LL" 
-  if (merged_data$price[hotspot[i]]<median(merged_data$price) & merged_data$wx[hotspot[i]]> median(merged_data$wx)) 
+  if (merged_data$price[hotspot[i]]<mean(merged_data$price) & merged_data$wx[hotspot[i]]> mean(merged_data$wx)) 
     merged_data$quadrant[hotspot[i]] <- "LH" 
 }
 table(merged_data$quadrant)
