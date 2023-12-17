@@ -313,7 +313,7 @@ MoraneI.boot <- function(var, i, ...) {
 boot1 <- boot(residuals(linear_model.lmx),statistic=MoraneI.boot,  
               R=999, sim="permutation", listw=listW1s,  
               n=length(listW1s$neighbours), S0=Szero(listW1s))
-ti <- (boot1$t0 - median(boot1$t))/sqrt(var(boot1$t))  
+ti <- (boot1$t0 - mean(boot1$t))/sqrt(var(boot1$t))  
 boot1
 plot(boot1)
 
@@ -436,7 +436,7 @@ leaflet(merged_data) %>%
     opacity = 0.7
   )
 
-merged_data$quadrant2 <- attr(lmI, "quadr")$median
+merged_data$quadrant2 <- attr(lmI, "quadr")$mean
 merged_data$quadrant2[merged_data$locmpv>0.005] <- NA
 breaks <- levels(merged_data$quadrant2)
 
