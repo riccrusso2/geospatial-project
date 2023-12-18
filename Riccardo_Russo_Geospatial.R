@@ -171,7 +171,7 @@ leaflet() %>%
 breaks <- pretty(merged_data$review_scores_location)
 pal <- colorNumeric("OrRd", breaks)
 leaflet() %>%
-  addProviderTiles("CartoDB.Positron") %>%  # Choose a tile provider (you can change it)
+  addProviderTiles("CartoDB.Positron") %>%  
   addPolygons(
     data = merged_data,
     fillColor = ~colorQuantile("OrRd", review_scores_location)(review_scores_location),
@@ -187,7 +187,7 @@ leaflet() %>%
     clusterOptions = markerClusterOptions()
   )%>%
   addLegend(
-    "bottomright",  # You can adjust the position as needed (e.g., "topright", "bottomleft", "topleft")
+    "bottomright",  
     pal = pal,
     values = merged_data$review_scores_location,
     title = "review_scores_location",
@@ -395,7 +395,7 @@ leaflet(merged_data) %>%
 lmI <- localmoran(merged_data$price, listW1s)
 head(lmI)
 merged_data$lmI <- lmI[,1]
-breaks <- c(-1, seq(-0.5, 0.5, by = 0.1), 1)  # Adjust breaks based on your data range
+breaks <- c(-1, seq(-0.5, 0.5, by = 0.1), 1)  
 color_palette <- colorRampPalette(c("red", "white", "green"))(length(breaks) - 1)
 
 leaflet(merged_data) %>%
